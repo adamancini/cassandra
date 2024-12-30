@@ -1,0 +1,19 @@
+apiVersion: v2
+name: cassandra
+description: A Helm chart for apache cassandra
+type: application
+version: 0.10.0
+appVersion: 4.1.6
+dependencies:
+- name: replicated
+  version: "^1.0.0-beta.31"
+  repository: "oci://registry.replicated.com/library"
+  condition: replicated.enabled
+- name: cassandra
+  version: 11.4.2
+  repository: https://charts.bitnami.com/bitnami
+  condition: cassandra.enabled
+- name: nfs-server
+  version: "^1.1.2"
+  repository: https://charts.obeone.cloud
+  condition: nfs-server.enabled
